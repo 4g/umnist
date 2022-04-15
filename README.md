@@ -1,8 +1,8 @@
 ## Setup
 
     git clone https://github.com/4g/umnist
-    git checkout master
     cd umnist
+    git checkout master
     git submodule update --init
     pip install -r requirements.txt
     pip install -r yolov5/requirements.txt
