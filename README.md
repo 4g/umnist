@@ -1,28 +1,53 @@
-Setup
-git clone https://github.com/4g/umnist
+## Setup
 
-pip install -r requirements.txt
+    git clone https://github.com/4g/umnist
+    cd umnist
+    git submodule update --init
+    pip install -r requirements.txt
+    python pipeline.py --task make_dirs
 
-Infer with pretrained model:
-Trained models are saved in the repo and can be used to regenerate the results. 
+This creates following directories:
+
+    store
+    ├── data
+    │   ├── competition
+    │   ├── generated
+    │        └── yolo
+    └── models
+        ├── classifier
+        └── yolo
+
+Paste your test images folder inside store/data/competition/. 
+So `umnist/store/data/competition/test/` will have competition jpeg images. 
+
+#### Infer with pretrained model
+Trained models are saved in the repo and can be used to regenerate the results.
+
+    python pipeline.py --task infer_pretrained
 
 
-Train from scratch:
+## Train from scratch:
 
+#### Create directories
+    python pipeline.py --task make_dirs
 
-cd umnist
-rm -r store
-python pipeline.py make_dirs
+Copy paste the test images folder to store/data/competition/ as described above
 
-Generate synthetic detector data:
+#### Generate synthetic detector data
 
-Generate synthetic classifier data:
+    python pipeline.py --task generate_yolo
 
-Train yolo:
+#### Generate synthetic classifier data
 
-Train classifier:
+    python pipeline.py --task generate_classifier
 
-Infer with newly trained models:
+#### Train yolo
 
+    python pipeline.py --task train_yolo
 
-make_dirs/generate_yolo/generate_classifier/train_yolo/train_classifier/set_pretrained/infer/infer_pretrained
+#### Train classifier
+
+    python pipeline.py --task train_classifier
+
+#### Infer with newly trained models:
+    python pipeline.py --task infer
