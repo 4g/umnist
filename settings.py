@@ -26,7 +26,7 @@ class CFG:
   synthetic_empty_image_samples = 4000
   digit_samples = 40000
   digit_size = 128
-  n_classifier_epochs = 150
+  n_classifier_epochs = 200
   n_yolo_epochs = 100
 
 #

@@ -53,15 +53,17 @@ class MnistGen(keras.utils.Sequence):
 
 
 def lr_schedule():
-    def lrs(epoch):
-        if epoch < 20:
-            return 0.00003
-        if epoch < 40:
-            return 0.00003
-        else:
-            return 0.00003
+  def lrs(epoch):
+    if epoch < 50:
+      return 0.0003
+    if epoch < 100:
+      return 0.0001
+    if epoch < 150:
+      return 0.00003
+    else:
+      return 0.00001
 
-    return keras.callbacks.LearningRateScheduler(lrs, verbose=True)
+  return keras.callbacks.LearningRateScheduler(lrs, verbose=True)
 
 def train(model_path, img_size, num_epochs):
   # Model / data parameters
@@ -108,7 +110,6 @@ def train(model_path, img_size, num_epochs):
   model.compile(loss="categorical_crossentropy", optimizer=keras.optimizers.Adam(.0003), metrics=["accuracy"])
 
   # model = keras.models.load_model("small_mnist/")
-  from callbacks import lr_schedule
 
   # comment this before final train
   # model.fit(x=train_gen, validation_data=val_gen, epochs=epochs, callbacks=[lr_schedule()])

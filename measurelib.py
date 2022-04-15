@@ -171,7 +171,7 @@ def filter_by_confidence(labels_dict):
 
 def measure(labels_dict, split):
   from yololib import draw_label_on_img
-  cv2.namedWindow("img", flags=cv2.WINDOW_NORMAL)
+  # cv2.namedWindow("img", flags=cv2.WINDOW_NORMAL)
   actual_labels = load_data(split)
   accuracy = 0
   total = 0
