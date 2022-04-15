@@ -5,6 +5,7 @@
     cd umnist
     git submodule update --init
     pip install -r requirements.txt
+    pip install -r yolov5/requirements.txt
     python pipeline.py --task make_dirs
 
 This creates following directories:
