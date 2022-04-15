@@ -1,6 +1,7 @@
 ## Setup
 
     git clone https://github.com/4g/umnist
+    git checkout master
     cd umnist
     git submodule update --init
     pip install -r requirements.txt
