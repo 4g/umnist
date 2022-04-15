@@ -17,7 +17,10 @@ def make_dirs():
     p.mkdir(parents=True, exist_ok=True)
 
 def pipeline(task):
-  if task == "train_yolo":
+  if task == "make_dirs":
+    make_dirs()
+
+  if task == "generate_yolo":
     locgen = CachedLocationGenerator(size=CFG.locgen_img_size,
                                      ratio=20,
                                      minsize=0.03,
@@ -54,11 +57,13 @@ def pipeline(task):
     make_yolo_data.make_yaml(base_path=f"{Paths.generated_data}",
                              yolo_cfg_path=Paths.yolo_cfg)
 
+  if task == "generate_classifier":
     create_classifier_data.create(img_width=CFG.sythetic_img_size,
                                   n_samples=CFG.digit_samples,
                                   net_img_size=CFG.digit_size,
                                   location=Paths.generated_digits)
 
+  if task == "train_yolo":
     yolo_train_run(data=Paths.yolo_cfg,
                    imgsz=CFG.sythetic_img_size,
                    weights='yolov5s.pt',
@@ -69,12 +74,10 @@ def pipeline(task):
                    exist_ok=True,
                    epochs=CFG.n_yolo_epochs)
 
-
   if task == "train_classifier":
     train_classifier(model_path=Paths.classifier_model, img_size=CFG.digit_size, num_epochs=CFG.n_classifier_epochs)
 
-
-  if task == "infer" or task == "infer_pretrained":
+  if task[:5] == "infer":
     if task == "infer_pretrained":
       Paths.yolo_model = Paths.pretrained_yolo
       Paths.classifier_model = Paths.pretrained_classifier
@@ -116,7 +119,7 @@ def pipeline(task):
 if __name__ == '__main__':
   import argparse
   parser = argparse.ArgumentParser()
-  parser.add_argument("--task", help="train_yolo/train_classifier/set_pretrained/infer/infer_pretrained")
+  parser.add_argument("--task", help="make_dirs/generate_yolo/generate_classifier/train_yolo/train_classifier/set_pretrained/infer/infer_pretrained")
 
   args = parser.parse_args()
   pipeline(args.task)
