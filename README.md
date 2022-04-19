@@ -1,3 +1,6 @@
+## Description
+`https://github.com/4g/umnist/blob/master/kaggle.md`
+
 ## Setup
 
     git clone https://github.com/4g/umnist
