@@ -1,5 +1,5 @@
 ## Description
-`https://github.com/4g/umnist/blob/master/kaggle.md`
+https://github.com/4g/umnist/blob/master/kaggle.md
 
 ## Setup
 
