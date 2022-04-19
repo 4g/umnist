@@ -25,7 +25,7 @@ This creates following directories:
 Paste your test images folder inside store/data/competition/. 
 So `umnist/store/data/competition/test/` will have competition jpeg images. 
 
-#### Infer with pretrained model
+## Infer with pretrained model
 Trained models are saved in the repo and can be used to regenerate the results. Following command generates a yolo_submission.csv file.
 
     python pipeline.py --task infer_pretrained
