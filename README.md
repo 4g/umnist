@@ -1,4 +1,4 @@
-This is the winning solution to kaggle Ultramnist. This solution got 99.109 and Ranked 1st on leaderboard. 
+This is the winning solution to kaggle Ultramnist. This solution got 99.109 and Ranked 1st on leaderboard [https://www.kaggle.com/competitions/ultra-mnist]. 
 Code is available here along with trained models. You can use these to regenerate the results. Instructions to train from scratch are also attached.  https://github.com/4g/umnist
 
 ## Idea
